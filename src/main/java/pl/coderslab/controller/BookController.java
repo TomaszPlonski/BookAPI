@@ -1,9 +1,7 @@
 package pl.coderslab.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Book;
 import pl.coderslab.serwis.MockBookService;
 
@@ -26,4 +24,11 @@ public class BookController {
     public List<Book> getAllBooks(){
         return mockBookService.getAll();
     }
+
+    @GetMapping("/{id}")
+    public Book getBookById(@PathVariable long id){
+        return mockBookService.getById(id);
+    }
+
+
 }
