@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class MockBookService {
-    private List<Book> list;
+    private final List<Book> list;
 
     public MockBookService() {
         list = new ArrayList<>();
@@ -18,6 +18,32 @@ public class MockBookService {
         list.add(new Book(3L, "9780130819338", "Java	2.	Podstawy", "Cay	Horstmann,	Gary	Cornell", "Helion",
                 "programming"));
     }
+
+    public List<Book> getAll(){
+        return list;
+    }
+
+    public Book getById(long id){
+        Book book = new Book();
+        return list.stream()
+                .filter(b -> b.getId()==id)
+                .findAny().orElseGet(() -> book);
+    }
+
+    public void add(Book book){
+        list.add(book);
+    }
+
+    public void delete(long id){
+        list.remove(getById(id));
+    }
+
+    public void edit(Book book){
+        delete(book.getId());
+        list.add(book);
+    }
+
+
 
 
 }
