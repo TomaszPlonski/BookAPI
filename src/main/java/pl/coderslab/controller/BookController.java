@@ -30,5 +30,11 @@ public class BookController {
         return mockBookService.getById(id);
     }
 
+    @PostMapping("")
+    public void addBook(@RequestParam Book book){
+        mockBookService.add(book);
+
+    }
+
 
 }
