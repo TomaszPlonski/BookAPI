@@ -33,8 +33,14 @@ public class BookController {
     @PostMapping("")
     public void addBook(@RequestParam Book book){
         mockBookService.add(book);
-
     }
+
+    @PutMapping("")
+    public void editBook(@RequestParam Book book){
+        mockBookService.edit(book);
+    }
+
+
 
 
 }
